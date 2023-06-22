@@ -15,6 +15,15 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class InfoServlet
+ * 
+ * This code uses JDBC and Statement API for inserting customer data in the Database
+ * When using Statement API, we have to worry about concatenating data in the sql query correct, which can be error prone
+ * Before we run this code:
+ * 1. We had to create table in the Database:
+ * 	  create table customer(id int auto_increment primary key, name varchar(25), email varchar(50), password varchar(12));
+ * 2. We had to download the mysql jdbc driver from the net:
+ * 		https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-8.0.33.zip
+ * 		After extracting it, we copied the mysql-connector...jar file into our project's WEB-INF/lib directory
  */
 @WebServlet("/register.cdac")
 public class RegisterServlet extends HttpServlet {
