@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>MyWebApp</display-name>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>home.html</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/notfound.html</location>
+  </error-page>
+
+  <servlet>
+  	<servlet-name>hello</servlet-name>
+  	<servlet-class>com.cdac.servlet.HelloServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>hello</servlet-name>
+  	<url-pattern>/hello.cdac</url-pattern>
+  </servlet-mapping>
+
+  <!-- <servlet>
+  	<servlet-name>lifecycle</servlet-name>
+  	<servlet-class>com.cdac.servlet.LifecycleServlet</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>lifecycle</servlet-name>
+  	<url-pattern>/lifecycle.cdac</url-pattern>
+  </servlet-mapping> -->
+
+
+</web-app>

@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HelloServlet
  */
-@WebServlet("/hello.cdac") //mapping / url-pattern
+//@WebServlet("/hello.cdac") //mapping / url-pattern
 public class HelloServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		out.write("<html><body>");
-		out.write("<h1>Welcome to Java based web development!</h1>");
+		out.write("<h1>Welcome to Java based web application development!</h1>");
 		LocalTime time = LocalTime.now();
 		if(time.getHour() >= 4 && time.getHour() < 12)
 			out.write("<h2>Good Morning!</h2>");
