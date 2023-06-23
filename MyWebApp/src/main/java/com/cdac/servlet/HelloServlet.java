@@ -20,6 +20,8 @@ public class HelloServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.write("<html><body>");
 		out.write("<h1>Welcome to Java based web application development!</h1>");
+		String str = "Hello Everyone!";
+		out.write("<h1>" + str + "</h1>");
 		LocalTime time = LocalTime.now();
 		if(time.getHour() >= 4 && time.getHour() < 12)
 			out.write("<h2>Good Morning!</h2>");
