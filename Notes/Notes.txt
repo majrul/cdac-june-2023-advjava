@@ -1,0 +1,97 @@
+Developer
+- Client/Server Applications
+- Web Applications
+- Mobile Applications
+- Desktop Applications
+
+  - Raw Materials
+    - Java, ..
+  - Tools
+    - Eclipse, ..
+
+What are the things required for hosting a website/webapp?
+- We need a Web Server for hosting our website
+- We/Client/Browser will use HTTP protocol to communicate with any website
+  - Protocols are used for networking OR client/server communication
+  - Examples on Protocols: FTP, SMTP/POP3, TCP/IP, ...
+    TODO: Check OSI layers
+- A website is developed using HTML, CSS and JavaScript
+- A website will basically comprise of:
+  - static content
+  - dynamic content
+- Some pages of our website will be static and some would be dynamic 
+  - For ex: searching for a product on flipkart, the result we see is dynamic
+  - In most cases data required to be presenting dynamically will come from a database
+    - We need someone who can pull this data from db and present it dynamically to the client
+      - We cannot use plain HTML/CSS/JS for this
+      - We need to additionally use Java technology to achieve this
+- Java is not the only technology for developing website dynamically
+  - We can use .NET/C#, Python, Node.js, PHP, ...
+- To sum up:
+  - If we need to create a static page, we will just focus on HTML, CSS and JS*
+    - * JS can be used to make a page dynamic, like for ex: displaying the Date on the screen
+    - * But JS cannot be used for dynamically fetching the data from the Database on the
+        server and displaying the data on the screen of the client
+    - We need to use Java additionally for achieving 100% dynamism in our websites
+
+- A website is made up of:
+  - client side code
+    - code which will run on the client's machine / browser
+      - HTML/CSS/JS runs on the client side
+      - Examples on client side JS libraries:
+        - jQuery
+        - Angular
+        - React
+  - server side code
+    - code which will run on the server / web server
+      - Java/Python/.NET
+      - Can we use JavaScript on the server side also?
+        - That means can we write server side code using JavaScript?
+          - The answer is YES
+            - We can use a server side framework called as Node.js
+
+- Remember:
+  - Everything is kept on the server
+  	- The client side code as well the server side code both
+  	- When we access any website, the client side code get's downloaded on our machine and get's executed with the help of the browser
+
+- To learn Web development using Java
+  - Prerequisite:
+    - Basic knowledge of HTML, CSS and JS
+    - Basic knowledge of Java
+  - Environment
+    - For coding, we will use some IDE:
+      - Eclipse
+    - For running/hosting/deploying our application, we need a web server:
+      - Tomcat
+
+What is a Servlet?
+- A servlet is a Java program which is executed using HTTP protocol
+  and it's used for generating html pages dynamically
+
+http://localhost:8181/MyWebApp/index.html
+http://localhost:8181/MyWebApp/HelloServlet
+
+Browser has no knowledge whether the url that we are accessing is static or dynamic
+
+TODO:
+- Read about HTTP protocol and it's methods (GET, POST, ..)
+- What is the role of Web Server?
+  - In the industry the most popular web servers are:
+    - Nginx
+    - Apache Web Server
+    - Microsoft IIS
+  - Then what is Apache Tomcat?
+    - How is it different from Apache Web Server?
+
+
+
+
+Analogy
+- Carpenter
+  - Table, Chair, Wardrobe, Doors/Windows, etc..
+
+  - Raw Materials
+    - Wood/Plywood, Fevicol, ...
+  - Tools
+    - Drill Machine, Wood Cutter/Saw, Hammer, ...
