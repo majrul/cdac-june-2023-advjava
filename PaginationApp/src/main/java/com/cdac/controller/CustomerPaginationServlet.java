@@ -22,14 +22,19 @@ public class CustomerPaginationServlet extends HttpServlet {
 	int cursor = 0;
 	int pageSize = 5;
 	
-	@Override
-	public void init() throws ServletException {
-		CustomerDataLoader custDataLoader = new CustomerDataLoader();
-		List<Customer> listOfCustomers = custDataLoader.loadCustomerData();
-
-	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String page = request.getParameter("page");
+		
+		if(page != null) {
+			if(page.equals("next"))
+				cursor += pageSize;
+			else if(page.equals("prev"))
+				cursor -= pageSize;
+		}
+		else
+			cursor = 0;
+		
 		CustomerDataLoader custDataLoader = new CustomerDataLoader();
 		List<Customer> listOfCustomers = custDataLoader.loadCustomerData();
 		
@@ -39,8 +44,6 @@ public class CustomerPaginationServlet extends HttpServlet {
 		session.setAttribute("5c", current5Customers);
 		
 		response.sendRedirect("viewCustomerData.jsp");
-
-		cursor += pageSize;
 	}
 
 }
