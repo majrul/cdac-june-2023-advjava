@@ -2,6 +2,15 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
   <display-name>MyWebApp</display-name>
 
+  <context-param>
+  	<param-name>startTime</param-name>
+  	<param-value>14</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>endTime</param-name>
+  	<param-value>23</param-value>
+  </context-param>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>home.html</welcome-file>
