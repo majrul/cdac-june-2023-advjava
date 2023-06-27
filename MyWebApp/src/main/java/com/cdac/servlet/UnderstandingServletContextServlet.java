@@ -32,7 +32,7 @@ public class UnderstandingServletContextServlet extends HttpServlet {
 		if(time.getHour() >= startTime && time.getHour() <= endTime)
 			out.write("<h2>You are on time, please continue..</h2>");
 		else
-			out.write("<h2>Sorry, you need to come back tomorrow</h2>");
+			out.write("<h2>Sorry, you need to come back later</h2>");
 		
 		out.write("</body></html>");
 	}

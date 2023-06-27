@@ -28,8 +28,8 @@ public class QuestionLoaderServlet extends HttpServlet {
 		if(qNo < questionsOnJava.size()) {
 			Question question = questionsOnJava.get(qNo++);
 			
-			HttpSession session = request.getSession();
-			session.setAttribute("q", question);
+			HttpSession s = request.getSession();
+			s.setAttribute("q", question);
 			
 			response.sendRedirect("viewQuestion.jsp");
 		}

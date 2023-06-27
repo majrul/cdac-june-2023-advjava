@@ -4,7 +4,7 @@
 
   <context-param>
   	<param-name>startTime</param-name>
-  	<param-value>14</param-value>
+  	<param-value>10</param-value>
   </context-param>
   <context-param>
   	<param-name>endTime</param-name>
@@ -30,6 +30,16 @@
   	<servlet-name>hello</servlet-name>
   	<url-pattern>/hello.cdac</url-pattern>
   </servlet-mapping>
+
+  <filter>
+  	<filter-name>hitcounter</filter-name>
+  	<filter-class>com.cdac.filter.HitCounterFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>hitcounter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <!-- <servlet>
   	<servlet-name>lifecycle</servlet-name>
