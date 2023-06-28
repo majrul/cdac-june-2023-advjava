@@ -35,7 +35,7 @@ public class CustomerDao {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		
-		Customer customer = em.find(Customer.class, 2);
+		Customer customer = em.find(Customer.class, id);
 		
 		tx.commit();
 		em.close();
