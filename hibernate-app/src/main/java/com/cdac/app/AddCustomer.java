@@ -23,10 +23,10 @@ public class AddCustomer {
 		tx.begin();
 		
 		Customer customer = new Customer();
-		customer.setName("John");
-		customer.setEmail("john@gmail.com");
+		customer.setName("Piyush");
+		customer.setEmail("piyush@gmail.com");
 		customer.setDateOfBirth(null); //try this on your own
-		customer.setCity("New York");
+		customer.setCity("Pune");
 		
 		em.persist(customer); //persist will generate insert query
 		
