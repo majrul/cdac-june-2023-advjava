@@ -57,6 +57,20 @@ public class EmployeeAddressDao {
 			em.close();
 		}
 	}
+	
+	public Employee findByName(String name) {
+		EntityManagerFactory emf = JPAUtil.getEntityManagerFactory();
+		EntityManager em = null;
+		try {
+			em = emf.createEntityManager();
+			Query q = em.createQuery("select e from Employee e where e.name = :nm");
+			q.setParameter("nm", name);
+			return (Employee) q.getSingleResult();
+		}
+		finally {
+			em.close();
+		}
+	}
 
 	public void store(Address addr) {
 		EntityManagerFactory emf = JPAUtil.getEntityManagerFactory();

@@ -20,6 +20,7 @@ public class EmployeeAddressTest {
 		
 		//adding address for an existing employee
 		/*Employee emp = dao.findByPK(2);
+		//Employee emp = dao.findByName("Anupama");
 		Address addr = new Address();
 		addr.setCity("Pune");
 		addr.setState("Maharashtra");
