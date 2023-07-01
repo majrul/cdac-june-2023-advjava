@@ -2,6 +2,7 @@ package com.cdac.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Employee {
 	private double salary;
 	private LocalDate dateOfJoining;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "addr_id") //fk column
 	private Address address;
 	//NO NO NO NO NO NO

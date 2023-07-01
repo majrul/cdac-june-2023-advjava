@@ -72,6 +72,54 @@ public class EmployeeAddressDao {
 		}
 	}
 
+	public List<Employee> findByJoiningYear(int year) {
+		EntityManagerFactory emf = JPAUtil.getEntityManagerFactory();
+		EntityManager em = null;
+		try {
+			em = emf.createEntityManager();
+			Query q = em.createQuery("select e from Employee e where year(e.dateOfJoining) = :yr");
+			q.setParameter("yr", year);
+			return q.getResultList();
+		}
+		finally {
+			em.close();
+		}
+	}
+	
+	public List<Employee> findBySalary(double salary) {
+		EntityManagerFactory emf = JPAUtil.getEntityManagerFactory();
+		EntityManager em = null;
+		try {
+			em = emf.createEntityManager();
+			Query q = em.createQuery("select e from Employee e where e.salary >= :sal");
+			q.setParameter("sal", salary);
+			return q.getResultList();
+		}
+		finally {
+			em.close();
+		}
+	}
+	
+	/*
+	 	SQL Query =>
+	 	SELECT * FROM TBL_EMPLOYEE E
+		JOIN TBL_ADDRESS A ON E.ADDR_ID = A.ADDR_ID
+		WHERE A.CITY = 'Mumbai';
+	 */
+	public List<Employee> findByCity(String city) {
+		EntityManagerFactory emf = JPAUtil.getEntityManagerFactory();
+		EntityManager em = null;
+		try {
+			em = emf.createEntityManager();
+			Query q = em.createQuery("select e from Employee e join e.address a where a.city = :ct");
+			q.setParameter("ct", city);
+			return q.getResultList();
+		}
+		finally {
+			em.close();
+		}
+	}
+
 	public void store(Address addr) {
 		EntityManagerFactory emf = JPAUtil.getEntityManagerFactory();
 		EntityManager em = null;
