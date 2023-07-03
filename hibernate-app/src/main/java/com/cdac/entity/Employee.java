@@ -28,6 +28,7 @@ public class Employee {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "addr_id") //fk column
 	private Address address;
+	
 	//NO NO NO NO NO NO
 	//private int addrId;
 	//We do not keep fk as a member variable in our classes
