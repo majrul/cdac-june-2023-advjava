@@ -1,5 +1,6 @@
 package com.cdac.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.cdac.dao.GenericDao;
@@ -19,17 +20,67 @@ public class AccountService {
 		}
 	}
 	
+
 	public void withdraw(int acno, double amount) {
-		one record should get inserted in transaction table
-		balance should get updated in the account table
+		//balance should get updated in the account table
+		//one record should get inserted in transaction table
+		GenericDao dao = new GenericDao();
+		Account account = (Account) dao.findByPK(Account.class, acno);
+		if(amount > account.getBalance())
+			throw new AccountException("Cannot Withdraw. Insufficient Balance!");
+		else {
+			account.setBalance(account.getBalance() - amount);
+			dao.save(account);
+			Transaction tx = new Transaction();
+			tx.setType("WITHDRAW");
+			tx.setAmount(amount);
+			tx.setDateAndTime(LocalDateTime.now());
+			tx.setAccount(account);
+			dao.save(tx);
+		}
 	}
 
 	public void deposit(int acno, double amount) {
-		
+		GenericDao dao = new GenericDao();
+		Account account = (Account) dao.findByPK(Account.class, acno);
+		account.setBalance(account.getBalance() + amount);
+		dao.save(account);
+		Transaction tx = new Transaction();
+		tx.setType("DEPOSIT");
+		tx.setAmount(amount);
+		tx.setDateAndTime(LocalDateTime.now());
+		tx.setAccount(account);
+		dao.save(tx);
 	}
 
 	public void transfer(int fromAcno, int toAcno, double amount) {
-		
+		//withdraw(fromAcno,  amount);
+		//deposit(toAcno, amount);
+		GenericDao dao = new GenericDao();
+		Account fromAccount = (Account) dao.findByPK(Account.class, fromAcno);
+		Account toAccount = (Account) dao.findByPK(Account.class, toAcno);
+		if(amount > fromAccount.getBalance())
+			throw new AccountException("Cannot Transfer. Insufficient Balance!");
+		else {
+			fromAccount.setBalance(fromAccount.getBalance() - amount);
+			toAccount.setBalance(toAccount.getBalance() + amount);
+
+			Transaction tx1 = new Transaction();
+			tx1.setType("FUND TRANSFER");
+			tx1.setAmount(amount);
+			tx1.setDateAndTime(LocalDateTime.now());
+			tx1.setAccount(fromAccount);
+			Transaction tx2 = new Transaction();
+			tx2.setType("FUND RECEIVED");
+			tx2.setAmount(amount);
+			tx2.setDateAndTime(LocalDateTime.now());
+			tx2.setAccount(toAccount);
+			
+			dao.save(fromAccount);
+			dao.save(toAccount);
+			dao.save(tx1);
+			dao.save(tx2);
+		}
 	}
 	
 	public double balanceCheck(int acno) {
@@ -37,6 +88,7 @@ public class AccountService {
 	}
 	
 	public List<Transaction> miniStatement(int acno) {
+		//write the query in the dao to fetch recent 5 transactions done in the given account
 		return null;
 	}
 }
