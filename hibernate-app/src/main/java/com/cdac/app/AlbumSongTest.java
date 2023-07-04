@@ -1,11 +1,8 @@
 package com.cdac.app;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.cdac.dao.AlbumSongDao;
-import com.cdac.dao.GenericDao;
 import com.cdac.entity.Album;
 import com.cdac.entity.Song;
 
@@ -69,11 +66,37 @@ public class AlbumSongTest {
 		}*/
 		
 		//List<Song> list = dao.findSongsByArtist("Neha Kakkar");
-		List<Song> list = dao.findSongsByArtistAndYear("Neha Kakkar", 2020);
+		/*List<Song> list = dao.findSongsByArtistAndYear("Neha Kakkar", 2020);
 		for(Song song : list) {
 			System.out.println(song.getTitle());
 			System.out.println(song.getGenre());
 			System.out.println("--------------");
+		}*/
+		
+		//checking the working of lazy and eager loading
+		Album album = (Album) dao.findByPK(Album.class, 1);
+		System.out.println(album.getId());
+		System.out.println(album.getName());
+		System.out.println(album.getReleaseDate());
+		System.out.println(album.getCopyright());
+		
+		List<Song> songs = album.getSongs();
+		for(Song song : songs) {
+			System.out.println("--------------");
+			System.out.println(song.getTitle());
+			System.out.println(song.getGenre());
+			System.out.println(song.getArtist());
 		}
+		
+		/*Song song = (Song) dao.findByPK(Song.class, 1);
+		System.out.println(song.getTitle());
+		System.out.println(song.getGenre());
+		System.out.println(song.getArtist());
+		
+		Album album = song.getAlbum();
+		System.out.println(album.getName());
+		System.out.println(album.getReleaseDate());
+		System.out.println(album.getCopyright());*/
+		
 	}
 }
