@@ -20,12 +20,14 @@ public class App {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("my-spring-config.xml");
 		//ApplicationContext ctx = new AnnotationConfigApplicationContext(MySpringConfig.class);
 		//Accessing a bean
-		HelloWorld hw = (HelloWorld) ctx.getBean("hello");
 		//why are we using Spring? why not we write like this:
 		//HelloWorld hw = new HelloWorld();
-		System.out.println(hw.sayHello("Majrul"));
+		for(int i=0; i<5; i++) {
+			HelloWorld hw = (HelloWorld) ctx.getBean("hello");
+			System.out.println(hw.sayHello("Majrul"));
+		}
 		
-		Greeting gt = (Greeting) ctx.getBean("greet");
+		/*Greeting gt = (Greeting) ctx.getBean("greet");
 		System.out.println(gt.greet("Majrul"));
 		
 		Calculator calc = (Calculator) ctx.getBean("calc");
@@ -48,6 +50,6 @@ public class App {
 		te.load("abc.txt");
 		
 		Atm atm = ctx.getBean(HdfcAtm.class);
-		atm.withdraw(101010, 5000);
+		atm.withdraw(101010, 5000);*/
 	}
 }
