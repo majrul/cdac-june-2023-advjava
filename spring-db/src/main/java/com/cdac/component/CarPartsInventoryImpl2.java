@@ -11,6 +11,9 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/*
+ *  In the second version, we used Spring to help us setup a Connection pool in our app and inject the same in the code
+ */
 @Component("carPartsInv2")
 public class CarPartsInventoryImpl2 implements CarPartsInventory {
 

@@ -1,5 +1,7 @@
 package com.cdac.app;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -11,10 +13,10 @@ public class App {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("my-spring-config.xml");
 		
-		CarPartsInventory cpInv = (CarPartsInventory) ctx.getBean("carPartsInv2");
+		CarPartsInventory cpInv = (CarPartsInventory) ctx.getBean("carPartsInv3");
 		
 		//entities/model classes are not instantiated using Spring
-		CarPart carPart = new CarPart();
+		/*CarPart carPart = new CarPart();
 		carPart.setPartName("Seatbelt");
 		carPart.setCarModel("Maruti 800");
 		carPart.setPrice(1500);
@@ -23,6 +25,11 @@ public class App {
 		long ms1 = System.currentTimeMillis();
 		cpInv.addNewPart(carPart);
 		long ms2 = System.currentTimeMillis();
-		System.out.println("Approx time taken : " + (ms2-ms1) + " ms");
+		System.out.println("Approx time taken : " + (ms2-ms1) + " ms");*/
+		
+		List<CarPart> list = cpInv.getAvailableParts();
+		for(CarPart cp : list)  {
+			System.out.println(cp);
+		}
 	}
 }

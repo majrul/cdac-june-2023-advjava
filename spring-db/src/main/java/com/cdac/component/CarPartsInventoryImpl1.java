@@ -16,6 +16,8 @@ CREATE TABLE TBL_CARPART
  CAR_MODEL VARCHAR(25),
  PRICE DOUBLE,
  QUANTITY INT);
+ 
+ In the first version, we used Spring to create object of this class and nothing else
  */
 @Component("carPartsInv1")
 public class CarPartsInventoryImpl1 implements CarPartsInventory {

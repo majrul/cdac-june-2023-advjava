@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- loading annotated beans -->
 	<context:component-scan base-package="com.cdac.component" />
@@ -24,4 +26,33 @@
 		<property name="password" value="passw0rd" />
 		<property name="initialSize" value = "3" />
 	</bean>
+	
+	<!-- Hibernate/JPA Configuiration
+		This bean entry is responsible for creating the EntityManagerFactory & EntityManager
+		object for us, which can then be injected in our code using @PersistenceContext annotation
+		Also we don't need to configure a separate META-INF/persistence.xml file, since
+		the required settings of Hibernate can be done here itself within this bean declaration
+	 -->
+	<bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	    <property name="dataSource" ref="dataSource" />
+	    <property name="packagesToScan" value="com.cdac.component" /> <!-- Location of @Entity classes -->
+	    <property name="jpaVendorAdapter">
+	        <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+	    </property>
+	    <property name="jpaProperties">
+	        <props>
+	            <prop key="hibernate.hbm2ddl.auto">update</prop>
+	            <prop key="hibernate.show_sql">true</prop>
+	        </props>
+	    </property>
+	</bean>
+	
+	<!-- This bean entry is required for ensure transactions are managed correclty in our Hibernate/JPA code
+		Then we can use @Transactional in our code to automatically get the same managed -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    	<property name="entityManagerFactory" ref="myEmf" />
+	</bean>
+	
+	<tx:annotation-driven />
+	
 </beans>
