@@ -22,10 +22,13 @@ public class App {
 		//Accessing a bean
 		//why are we using Spring? why not we write like this:
 		//HelloWorld hw = new HelloWorld();
-		for(int i=0; i<5; i++) {
+		/*for(int i=0; i<5; i++) {
 			HelloWorld hw = (HelloWorld) ctx.getBean("hello");
 			System.out.println(hw.sayHello("Majrul"));
-		}
+		}*/
+		
+		Car car = (Car) ctx.getBean("car");
+		car.start();
 		
 		/*Greeting gt = (Greeting) ctx.getBean("greet");
 		System.out.println(gt.greet("Majrul"));

@@ -10,6 +10,8 @@
 	<bean id="hello" class="com.cdac.component.HelloWorld" scope="prototype" lazy-init="false" />
 	<bean id="greet" class="com.cdac.component.Greeting" />
 	
+	<!-- <bean id="engine" class="com.cdac.component.Engine" /> -->
+	
 	<!-- loading annotated beans -->
 	<context:component-scan base-package="com.cdac.component" />
 </beans>

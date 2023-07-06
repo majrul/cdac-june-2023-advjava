@@ -11,7 +11,7 @@ public class App {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("my-spring-config.xml");
 		
-		CarPartsInventory cpInv = (CarPartsInventory) ctx.getBean("carPartsInv1");
+		CarPartsInventory cpInv = (CarPartsInventory) ctx.getBean("carPartsInv2");
 		
 		//entities/model classes are not instantiated using Spring
 		CarPart carPart = new CarPart();
