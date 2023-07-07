@@ -2,11 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<!-- loading annotated beans -->
 	<context:component-scan base-package="com.cdac.component" />
@@ -54,5 +56,11 @@
 	</bean>
 	
 	<tx:annotation-driven />
+	
+	<!-- Setting required for enabling support for Spring Data JPA.
+		What we are basically doing is telling Spring to scan this package
+		and search for any interface which is extending CrudRepository/JpaRepository
+		and if found, go and implement the same and keep it ready -->
+	<jpa:repositories base-package="com.cdac.component" entity-manager-factory-ref="myEmf" />
 	
 </beans>
