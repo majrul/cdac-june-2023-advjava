@@ -30,6 +30,9 @@ public class Customer {
 	@Column(name = "city_of_residence")
 	private String city;
 	
+	@Column(name = "phone_number")
+	private long phoneNumber;
+	
 	public int getId() {
 		return id;
 	}
@@ -60,6 +63,11 @@ public class Customer {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	
 }

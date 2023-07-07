@@ -17,16 +17,23 @@ public class App2 {
 		CarPartsRepository cpRepo = ctx.getBean(CarPartsRepository.class);
 		
 		/*CarPart carPart = new CarPart();
-		carPart.setPartName("Mirror");
-		carPart.setCarModel("Maruti 800");
-		carPart.setPrice(2500);
-		carPart.setQuantity(25);
+		carPart.setPartName("Seat Cover");
+		carPart.setCarModel("Hyundai i10");
+		carPart.setPrice(5000);
+		carPart.setQuantity(99);
+		carPart.setManufacturer("CarWale Accessories Pvt. Ltd.");
 		
 		cpRepo.save(carPart);*/
 		
-		List<CarPart> list = cpRepo.findAll();
-		for(CarPart cp : list)  {
+		//List<CarPart> list = cpRepo.findAll();
+		//List<CarPart> list = cpRepo.findByCarModel("Hyundai");
+		//List<CarPart> list = cpRepo.findByPriceAndQuantity(2500, 25);
+		//List<CarPart> list = cpRepo.findInStockParts();
+		//List<CarPart> list = cpRepo.findByPriceInRange(1000, 2000);
+		/*for(CarPart cp : list)  {
 			System.out.println(cp);
-		}
+		}*/
+		
+		cpRepo.updateManufacturerForAll("CarWale Accessories Pvt. Ltd.");
 	}
 }

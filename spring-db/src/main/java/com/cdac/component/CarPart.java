@@ -25,6 +25,8 @@ public class CarPart {
 	private double price;
 	private int quantity;
 	
+	private String manufacturer;
+	
 	public int getPartNo() {
 		return partNo;
 	}
@@ -55,10 +57,16 @@ public class CarPart {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
+	public String getManufacturer() {
+		return manufacturer;
+	}
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
 	@Override
 	public String toString() {
 		return "CarPart [partNo=" + partNo + ", partName=" + partName + ", carModel=" + carModel + ", price=" + price
-				+ ", quantity=" + quantity + "]";
+				+ ", quantity=" + quantity + ", manufacturer=" + manufacturer + "]";
 	}
+	
 }
