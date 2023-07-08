@@ -11,5 +11,34 @@
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<context:component-scan base-package="com.cdac.controller" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" init-method="createDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/training" />
+		<property name="username" value="root" />
+		<property name="password" value="passw0rd" />
+		<property name="initialSize" value = "1" />
+	</bean>
+
+	<bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	    <property name="dataSource" ref="dataSource" />
+	    <property name="packagesToScan" value="com.cdac.entity" />
+	    <property name="jpaVendorAdapter">
+	        <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+	    </property>
+	    <property name="jpaProperties">
+	        <props>
+	            <prop key="hibernate.hbm2ddl.auto">update</prop>
+	            <prop key="hibernate.show_sql">true</prop>
+	        </props>
+	    </property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    	<property name="entityManagerFactory" ref="myEmf" />
+	</bean>
+	<tx:annotation-driven />
+
+	<jpa:repositories base-package="com.cdac.repository" entity-manager-factory-ref="myEmf" />
 	
 </beans>
