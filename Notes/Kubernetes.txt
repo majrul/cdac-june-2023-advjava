@@ -1,0 +1,26 @@
+First Download and Install Minikube
+
+To start Minikube:
+- minikube start
+
+To check the status:
+- minikube status
+
+To see the Kubernetes Dashboard:
+- minikube dashboard
+
+Steps in Deploying a Docker image using Kubernetes:
+- First create an image of your app
+  - docker build -t image-name .
+- Then push your image on Dockerhub
+  - First on Docker hub website, login and create your repository (my-example8)
+  - Then on the command prompt:
+    - docker login
+    - docker tag my-example8 majrul/my-example8 (replace majrul with your dockerhub username)
+    - docker push majrul/my-example8
+- Then deploy the app to the Kubernetes cluster using:
+  - kubectl apply -f deployment.yml
+- To check the status of our deployment:
+  - kubectl get deployments
+- To see the no. of pods created for our deployment:
+  - kubectl get pods
