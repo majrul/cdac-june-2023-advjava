@@ -16,7 +16,8 @@ import com.cdac.repository.BookingRepository;
 public class BookingService {
 
 	@Autowired
-	private FlightServiceProxy flightServiceProxy;
+	//private FlightServiceProxy flightServiceProxy;
+	private FlightServiceProxy2 flightServiceProxy;
 	
 	@Autowired
 	private BookingRepository bookingRepository;

@@ -25,7 +25,6 @@ public class BookingController {
 			status.setStatus(true);
 			status.setMessage("Booking successful!");
 			status.setBookingId(bookingId);
-			
 			return status;
 		}
 		catch(BookingException e) {
